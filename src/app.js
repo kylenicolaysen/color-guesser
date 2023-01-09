@@ -1,7 +1,7 @@
 import React from 'react'
 import { createRoot } from 'react-dom/client'
-import MainPage from './components/MainPage'
+import HexGuessPage from './components/HexGuessPage'
 import './styles/styles.scss'
 
 const root = createRoot(document.getElementById('root'))
-root.render(<MainPage />)
+root.render(<HexGuessPage />)
