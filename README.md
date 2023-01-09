@@ -1,1 +1,1 @@
-Bare minimum React 18 boilerplate with no backend.
+Guess the color based on the random hex value provided. Or guess the hex value based on the random color provided.
