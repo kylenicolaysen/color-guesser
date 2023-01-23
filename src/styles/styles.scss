@@ -1,10 +1,14 @@
+@import "./base/settings";
+
 html {
   margin: 0;
   padding: 0;
+  color: $off-white;
 }
 
 body{
-  background-color: hsl(60, 20%, 94%);
+  // background-color: hsl(60, 20%, 94%);
+  background-color: $dark-purple;
 }
 
 div {
@@ -43,4 +47,33 @@ div {
   padding: 2rem;
   font-size: 2rem;
   font-weight: 600;
+}
+
+.header {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1px;
+  padding: 0;
+  margin: 0
+}
+
+.header-title {
+  margin-left: 3rem;
+}
+
+.retry-button {
+  background-color: $mid-dark-purple;
+  color: $off-white;
+  margin: 1rem;
+  padding: 2rem;
+  border: darken($mid-dark-purple, 10) solid 10px;
+  border-radius: 2rem;
+  font-size: 2rem;
+  font-weight: 600;
+  font-stretch: ultra-expanded;
+  letter-spacing: .3rem;
+}
+
+#disabled-button {
+  color: grey;
 }

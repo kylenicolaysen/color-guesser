@@ -2,11 +2,10 @@ import React, { useState } from 'react'
 let colorList = []
 let winner
 const gameReset = () => {
-  const getRandomColor = () => "#000000".replace(/0/g,function(){return (~~(Math.random()*16)).toString(16);})
+  const getRandomColor = () => '#000000'.replace(/0/g,function(){return (~~(Math.random()*16)).toString(16);})
   colorList = [getRandomColor(), getRandomColor(), getRandomColor(), getRandomColor()]
   winner = Math.floor(Math.random() * 4)
 }
-
 
 gameReset()
 
@@ -16,6 +15,9 @@ const HexGuessPage = () => {
   const [hasAnswered, setHasAnswered] = useState(false)
 
   const onColorClicked = (e) => {
+    if (hasAnswered) {
+      return
+    }
     const answer = parseInt(e.target.id)
     const guessedCorrect = (winner === answer) ? true : false
     const winBox = document.getElementById(winner.toString())
@@ -31,18 +33,31 @@ const HexGuessPage = () => {
   }
   const reload = () => {
     setHasAnswered(false)
-    window.location.reload()
+    gameReset()
+    document.getElementById("0").style.border = 'none'
+    document.getElementById("1").style.border = 'none'
+    document.getElementById("2").style.border = 'none'
+    document.getElementById("3").style.border = 'none'
+  }
+  const getScoreRatio = () => {
+    let ratio = Math.round(score / gamesPlayed * 100)
+    if (ratio > 0) {
+      return ratio
+    } else {
+      return 0
+    }
   }
   return (
     <div className="page-container">
       <div className="header">
-        <h1>Guess the Color</h1>
+        <h1 className="header-title">Guess the Color</h1>
+        <button className="retry-button" id = {!hasAnswered ? "disabled-button" : ""} onClick={reload}>NEXT</button>
       </div>
       <div className="container">
         <div className="item question-box">
-          <p>What color is {colorList[winner]}?</p>
-          {hasAnswered ? <button onClick={reload}>Try Again</button> : <div></div>}
-            <p>Score: {score}</p>
+          <h2>What color is {colorList[winner]}?</h2>
+          <p>Score: {score} / {gamesPlayed}</p>
+          <p>{getScoreRatio(score, gamesPlayed)}%</p>
         </div>
         <div
           className="item"
@@ -71,6 +86,7 @@ const HexGuessPage = () => {
       </div>
     </div>
   )
+  
 }
 
 export default HexGuessPage
