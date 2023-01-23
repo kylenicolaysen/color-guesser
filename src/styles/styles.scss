@@ -3,12 +3,11 @@
 html {
   margin: 0;
   padding: 0;
-  color: $off-white;
+  color: $dark-purple;
 }
 
 body{
-  // background-color: hsl(60, 20%, 94%);
-  background-color: $dark-purple;
+  background-color: $bg-white;
 }
 
 div {
@@ -34,7 +33,7 @@ div {
 }
 
 .item:hover {
-  border: 2px solid blue;
+  border: 2px solid $winner-green;
 }
 
 .item:first-child {
@@ -62,11 +61,11 @@ div {
 }
 
 .retry-button {
-  background-color: $mid-dark-purple;
-  color: $off-white;
+  background-color: ligthen($bg-white, 1);
+  color: $dark-purple;
   margin: 1rem;
   padding: 2rem;
-  border: darken($mid-dark-purple, 10) solid 10px;
+  border: lighten($bg-white, 3) solid 10px;
   border-radius: 2rem;
   font-size: 2rem;
   font-weight: 600;
